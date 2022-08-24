@@ -1,10 +1,7 @@
 #define TESLA_INIT_IMPL
 #include <tesla.hpp>
 #include "dmntcht.h"
-
-#ifdef CUSTOM
 #include "Battery.hpp"
-#endif
 
 #define NVGPU_GPU_IOCTL_PMU_GET_GPU_LOAD 0x80044715
 #define FieldDescriptor uint32_t
@@ -38,14 +35,12 @@ Result tcCheck = 1;
 Result Hinted = 1;
 Result pmdmntCheck = 1;
 Result dmntchtCheck = 1;
-#ifdef CUSTOM
 Result psmCheck = 1;
 
 //Battery
 Service* psmService = 0;
 BatteryChargeInfoFields* _batteryChargeInfoFields = 0;
 char Battery_c[320];
-#endif
 
 //Temperatures
 int32_t SOC_temperatureC = 0;
@@ -197,9 +192,9 @@ void CheckButtons(void*) {
 				systemtickfrequency = 19200000;
 			}
 			else if (kHeld & KEY_DUP) {
-				TeslaFPS = 5;
-				refreshrate = 5;
-				systemtickfrequency = 3840000;
+				TeslaFPS = 20;
+				refreshrate = 20;
+				systemtickfrequency = 960000;
 			}
 		}
 		svcSleepThread(100'000'000);
@@ -577,8 +572,8 @@ public:
 
 		auto Status = new tsl::elm::CustomDrawer([](tsl::gfx::Renderer *renderer, u16 x, u16 y, u16 w, u16 h) {
 			
-			if (GameRunning == false) renderer->drawRect(0, 0, tsl::cfg::FramebufferWidth - 150, 80, a(0x7111));
-			else renderer->drawRect(0, 0, tsl::cfg::FramebufferWidth - 150, 110, a(0x7111));
+			if (GameRunning == false) renderer->drawRect(0, 0, tsl::cfg::FramebufferWidth - 149, 80, a(0x7111));
+			else renderer->drawRect(0, 0, tsl::cfg::FramebufferWidth - 149, 110, a(0x7111));
 			
 			//Print strings
 			///CPU
@@ -659,7 +654,6 @@ public:
 	}
 };
 
-#ifdef CUSTOM
 void BatteryChecker(void*) {
 	if (R_SUCCEEDED(psmCheck)){
 		_batteryChargeInfoFields = new BatteryChargeInfoFields;
@@ -780,7 +774,6 @@ public:
 		return false;
 	}
 };
-#endif
 
 //Main Menu
 class MainMenu : public tsl::Gui {
@@ -836,7 +829,7 @@ public:
 			});
 			list->addItem(comFPS);
 		}
-#ifdef CUSTOM
+
 		auto Custom = new tsl::elm::ListItem("Custom");
 		Custom->setClickListener([](uint64_t keys) {
 			if (keys & KEY_A) {
@@ -851,7 +844,6 @@ public:
 			return false;
 		});
 		list->addItem(Custom);
-#endif
 
 		rootFrame->setContent(list);
 
@@ -897,10 +889,9 @@ public:
 
 			if (R_SUCCEEDED(nvInitialize())) nvCheck = nvOpen(&fd, "/dev/nvhost-ctrl-gpu");
 			
-#ifdef CUSTOM
+
 			psmCheck = psmInitialize();
 			if (R_SUCCEEDED(psmCheck)) psmService = psmGetServiceSession();
-#endif
 			
 			Atmosphere_present = isServiceRunning("dmnt:cht");
 			SaltySD = CheckPort();
@@ -932,9 +923,7 @@ public:
 		fanExit();
 		nvClose(fd);
 		nvExit();
-#ifdef CUSTOM
 		psmExit();
-#endif
 	}
 
     virtual void onShow() override {}    // Called before overlay wants to change from invisible to visible state
