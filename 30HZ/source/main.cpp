@@ -723,7 +723,7 @@ public:
 	}
 
 	virtual void update() override {
-		if (TeslaFPS == 60) TeslaFPS = 1;
+		if (TeslaFPS == 60) TeslaFPS = 60;
 		//In case of getting more than systemtickfrequency in idle, make it equal to systemtickfrequency to get 0% as output and nothing less
 		//This is because making each loop also takes time, which is not considered because this will take also additional time
 		if (idletick0 > systemtickfrequency) idletick0 = systemtickfrequency;
