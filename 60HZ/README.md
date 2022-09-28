@@ -43,6 +43,7 @@ Q: This homebrew has any impact on games?
 A: 
 - When not using FPS Counter: Negligible, you won't see any difference. Almost everything is done on Core `#3`, other cores usage is below 0.001%.
 - When using FPS Counter: it may impact timing between threads, so in some games it may result f.e. in stuck loading screens or jumping audio. It's found rarely, but issue exists and this is because of nature how Status Monitor gets info about FPS currently.
+- This 60HZ Refesh version stresses core #3 much more than the base version, however it has been tested as low as 918MHz and it seems to work fine, but it has the potential to reduce preformance at lower clocks.
 
 # Troubleshooting:
 
