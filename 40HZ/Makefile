@@ -37,7 +37,7 @@ include $(DEVKITPRO)/libnx/switch_rules
 #   of a homebrew executable (.nro). This is intended to be used for sysmodules.
 #   NACP building is skipped as well.
 #---------------------------------------------------------------------------------
-APP_TITLE	:=	Status Monitor 30HZ
+APP_TITLE	:=	Status Monitor 40HZ
 APP_VERSION	:=	0.6.4
 TARGET		:=	$(notdir $(CURDIR))
 BUILD		:=	build
