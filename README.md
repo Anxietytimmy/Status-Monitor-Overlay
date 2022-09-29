@@ -16,7 +16,7 @@ All button combos are the exact same as the original.
 
 # Known issues 
  - Much higher use of Core #3
- - Audio dysnic\stutter in games like Xenoblade Chonicles 2
+ - Audio dysnic\stutter in games like Xenoblade Chonicles 2 (Seems to not occur using either 5Hz or 60hz 
  - 60Hz version has broken transparancy after enabling 60Hz in mini, going back to the main menu and selecting full 
 
 # Thanks 
