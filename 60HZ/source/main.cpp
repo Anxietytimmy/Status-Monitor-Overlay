@@ -822,8 +822,8 @@ public:
 			comFPS->setClickListener([](uint64_t keys) {
 				if (keys & KEY_A) {
 					StartFPSCounterThread();
-					TeslaFPS = 31;
-					refreshrate = 31;
+					TeslaFPS = 60;
+					refreshrate = 60;
 					alphabackground = 0x0;
 					tsl::hlp::requestForeground(false);
 					FullMode = false;
