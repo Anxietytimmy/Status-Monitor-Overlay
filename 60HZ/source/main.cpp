@@ -202,6 +202,11 @@ void CheckButtons(void*) {
 				refreshrate = 30; 
 				systemtickfrequency = 640000;
 			}
+			else if (kHeld & KEY_DLEFT) {
+				TeslaFPS = 20;
+				refreshrate = 60;
+				systemtickfrequency = 960000;
+			}
 		svcSleepThread(100'000'000);
 	}
 }
