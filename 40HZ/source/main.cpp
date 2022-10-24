@@ -404,7 +404,7 @@ public:
 				if (FPSavg >= 10) avg = 23;
 				if (FPSavg >= 100) avg = 46;
 				renderer->drawRect(0, 0, tsl::cfg::FramebufferWidth - 370 + avg, 50, a(0x7111));
-				renderer->drawString(FPSavg_c, false, 5, 40, 40, renderer->a(0xFFFF));
+				renderer->drawString(FPSavg_c, false, 5, 38, 38, renderer->a(0xFFFF));
 		});
 
 		rootFrame->setContent(Status);
@@ -573,7 +573,7 @@ public:
 		auto Status = new tsl::elm::CustomDrawer([](tsl::gfx::Renderer *renderer, u16 x, u16 y, u16 w, u16 h) {
 			
 			if (GameRunning == false) renderer->drawRect(0, 0, tsl::cfg::FramebufferWidth - 140, 70, a(0x7111));
-			else renderer->drawRect(0, 0, tsl::cfg::FramebufferWidth - 149, 110, a(0x7111));
+			else renderer->drawRect(0, 0, tsl::cfg::FramebufferWidth - 140, 110, a(0x7111));
 			
 			//Print strings
 			///CPU
