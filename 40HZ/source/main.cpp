@@ -572,8 +572,8 @@ public:
 
 		auto Status = new tsl::elm::CustomDrawer([](tsl::gfx::Renderer *renderer, u16 x, u16 y, u16 w, u16 h) {
 			
-			if (GameRunning == false) renderer->drawRect(0, 0, tsl::cfg::FramebufferWidth - 140, 70, a(0x7111));
-			else renderer->drawRect(0, 0, tsl::cfg::FramebufferWidth - 140, 110, a(0x7111));
+			if (GameRunning == false) renderer->drawRect(0, 0, tsl::cfg::FramebufferWidth - 130, 70, a(0x7111));
+			else renderer->drawRect(0, 0, tsl::cfg::FramebufferWidth - 130, 110, a(0x7111));
 			
 			//Print strings
 			///CPU
